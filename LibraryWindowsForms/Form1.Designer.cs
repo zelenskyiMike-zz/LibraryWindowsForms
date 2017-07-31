@@ -1,6 +1,6 @@
 ﻿namespace LibraryWindowsForms
 {
-    partial class Form1
+    partial class LibraryForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -31,10 +31,11 @@
             this.labelProgName = new System.Windows.Forms.Label();
             this.dataLibraryGridView = new System.Windows.Forms.DataGridView();
             this.buttonDeleteBook = new System.Windows.Forms.Button();
-            this.buttonTakeBook = new System.Windows.Forms.Button();
             this.buttonEditBook = new System.Windows.Forms.Button();
             this.buttonAddBook = new System.Windows.Forms.Button();
+            this.libraryDBDataSet = new LibraryWindowsForms.LibraryDBDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dataLibraryGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProgName
@@ -52,13 +53,14 @@
             this.dataLibraryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataLibraryGridView.Location = new System.Drawing.Point(13, 61);
             this.dataLibraryGridView.Name = "dataLibraryGridView";
-            this.dataLibraryGridView.Size = new System.Drawing.Size(638, 332);
+            this.dataLibraryGridView.ReadOnly = true;
+            this.dataLibraryGridView.Size = new System.Drawing.Size(613, 332);
             this.dataLibraryGridView.TabIndex = 1;
             // 
             // buttonDeleteBook
             // 
             this.buttonDeleteBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteBook.Location = new System.Drawing.Point(674, 132);
+            this.buttonDeleteBook.Location = new System.Drawing.Point(646, 132);
             this.buttonDeleteBook.Name = "buttonDeleteBook";
             this.buttonDeleteBook.Size = new System.Drawing.Size(189, 43);
             this.buttonDeleteBook.TabIndex = 10;
@@ -66,20 +68,10 @@
             this.buttonDeleteBook.UseVisualStyleBackColor = true;
             this.buttonDeleteBook.Click += new System.EventHandler(this.buttonDeleteBook_Click);
             // 
-            // buttonTakeBook
-            // 
-            this.buttonTakeBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTakeBook.Location = new System.Drawing.Point(674, 61);
-            this.buttonTakeBook.Name = "buttonTakeBook";
-            this.buttonTakeBook.Size = new System.Drawing.Size(189, 43);
-            this.buttonTakeBook.TabIndex = 11;
-            this.buttonTakeBook.Text = "Take a book";
-            this.buttonTakeBook.UseVisualStyleBackColor = true;
-            // 
             // buttonEditBook
             // 
             this.buttonEditBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEditBook.Location = new System.Drawing.Point(674, 196);
+            this.buttonEditBook.Location = new System.Drawing.Point(646, 196);
             this.buttonEditBook.Name = "buttonEditBook";
             this.buttonEditBook.Size = new System.Drawing.Size(189, 43);
             this.buttonEditBook.TabIndex = 13;
@@ -90,7 +82,7 @@
             // buttonAddBook
             // 
             this.buttonAddBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddBook.Location = new System.Drawing.Point(674, 257);
+            this.buttonAddBook.Location = new System.Drawing.Point(646, 257);
             this.buttonAddBook.Name = "buttonAddBook";
             this.buttonAddBook.Size = new System.Drawing.Size(189, 43);
             this.buttonAddBook.TabIndex = 15;
@@ -98,20 +90,25 @@
             this.buttonAddBook.UseVisualStyleBackColor = true;
             this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
             // 
-            // Form1
+            // libraryDBDataSet
+            // 
+            this.libraryDBDataSet.DataSetName = "LibraryDBDataSet";
+            this.libraryDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 405);
+            this.ClientSize = new System.Drawing.Size(844, 417);
             this.Controls.Add(this.buttonAddBook);
             this.Controls.Add(this.buttonEditBook);
-            this.Controls.Add(this.buttonTakeBook);
             this.Controls.Add(this.buttonDeleteBook);
             this.Controls.Add(this.dataLibraryGridView);
             this.Controls.Add(this.labelProgName);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "LibraryForm";
+            this.Text = "LibraryApp";
             ((System.ComponentModel.ISupportInitialize)(this.dataLibraryGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,9 +119,9 @@
         private System.Windows.Forms.Label labelProgName;
         private System.Windows.Forms.DataGridView dataLibraryGridView;
         private System.Windows.Forms.Button buttonDeleteBook;
-        private System.Windows.Forms.Button buttonTakeBook;
         private System.Windows.Forms.Button buttonEditBook;
         private System.Windows.Forms.Button buttonAddBook;
+        private LibraryDBDataSet libraryDBDataSet;
     }
 }
 

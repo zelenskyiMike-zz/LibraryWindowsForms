@@ -1,0 +1,9 @@
+F:\LibraryWindowsForms\LibraryWindowsForms\bin\Debug\LibraryWindowsForms.exe.config
+F:\LibraryWindowsForms\LibraryWindowsForms\bin\Debug\LibraryWindowsForms.exe
+F:\LibraryWindowsForms\LibraryWindowsForms\bin\Debug\LibraryWindowsForms.pdb
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.csprojResolveAssemblyReference.cache
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.Properties.Resources.resources
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.csproj.GenerateResource.Cache
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.exe
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.pdb
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.LibraryForm.resources
