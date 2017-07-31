@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Text;
+using System.IO;
 
 namespace LibraryWindowsForms
 {
@@ -17,6 +13,8 @@ namespace LibraryWindowsForms
             @"Data Source=(LocalDB)\MSSQLLocalDB;
             AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
             Integrated Security=True;Connect Timeout=30");
+        string writePath = @"readersCard.txt";
+
 
         public LibraryForm()
         {
@@ -35,18 +33,36 @@ namespace LibraryWindowsForms
             dataLibraryGridView.DataMember = "allBooksInfo";
             
             dataLibraryGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataLibraryGridView.AllowUserToAddRows = false;
+            connection.Close();
 
-            connection.Close(); 
+            
         }
 
         private void buttonTakeBook_Click(object sender, EventArgs e)
         {
+            int deleteIndex = dataLibraryGridView.SelectedCells[0].RowIndex;
+          
 
+            //!!!!!!!!!!!!!!!
+            using (StreamWriter streamWriter = new StreamWriter(writePath, true, Encoding.Default))
+            {
+                streamWriter.WriteLine();
+            }
         }
 
         private void buttonDeleteBook_Click(object sender, EventArgs e)
         {
+            int deleteIndex = dataLibraryGridView.SelectedCells[0].RowIndex;
 
+            //label1.Text = deleteIndex.ToString();
+            //dataLibraryGridView.Rows.RemoveAt(deleteIndex); 
+            SqlCommand deleteCommand = new SqlCommand(
+                @"delete Books 
+                  where idBook = " + deleteIndex+1 + "",connection);
+            connection.Open();
+            deleteCommand.ExecuteNonQuery();
+            connection.Close();
         }
 
         private void buttonEditBook_Click(object sender, EventArgs e)
