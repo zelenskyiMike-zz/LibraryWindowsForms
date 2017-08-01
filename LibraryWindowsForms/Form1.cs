@@ -20,23 +20,9 @@ namespace LibraryWindowsForms
         {
             InitializeComponent();
 
-            connection.Open();
-            DataSet dataSet = new DataSet();
-            DataTable bookViewTable = new DataTable();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(
-                @"Select Authors.fullNameOfAuthor, Genres.fullNameOfGenre,Books.nameOfBook,Books.yearOfPublish
-                  From Authors inner join Books on Authors.idAuthor = Books.idAuthor 
-                               inner join Genres on Genres.idGenre = Books.idGenre", connection);
-            dataAdapter.Fill(dataSet, "allBooksInfo");
-            dataLibraryGridView.AutoGenerateColumns = true;
-            dataLibraryGridView.DataSource = dataSet;
-            dataLibraryGridView.DataMember = "allBooksInfo";
-            
-            dataLibraryGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataLibraryGridView.AllowUserToAddRows = false;
-            connection.Close();
+            ShowTable();
 
-            
+
         }
 
         private void buttonTakeBook_Click(object sender, EventArgs e)
@@ -53,16 +39,10 @@ namespace LibraryWindowsForms
 
         private void buttonDeleteBook_Click(object sender, EventArgs e)
         {
-            int deleteIndex = dataLibraryGridView.SelectedCells[0].RowIndex;
-
-            //label1.Text = deleteIndex.ToString();
-            //dataLibraryGridView.Rows.RemoveAt(deleteIndex); 
-            SqlCommand deleteCommand = new SqlCommand(
-                @"delete Books 
-                  where idBook = " + deleteIndex+1 + "",connection);
-            connection.Open();
-            deleteCommand.ExecuteNonQuery();
-            connection.Close();
+            DeleteBook();
+           // MessageBox.Show("отработал DeleteBook() ");
+            ShowTable();
+           // MessageBox.Show("отработал ShowTable() ");
         }
 
         private void buttonEditBook_Click(object sender, EventArgs e)
@@ -75,6 +55,37 @@ namespace LibraryWindowsForms
 
         }
 
-       
+        private void DeleteBook()
+        {            
+            SqlCommand deleteCommand = new SqlCommand(
+                @"delete Books 
+                  where idBook = " + dataLibraryGridView.CurrentRow.Index + "", connection);
+            connection.Open();
+            deleteCommand.ExecuteNonQuery();
+            connection.Close();
+        }
+        private void ShowTable()
+        {
+            connection.Open();
+            DataSet dataSet = new DataSet();
+            DataTable bookViewTable = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(
+                @"Select Books.idBook, Authors.fullNameOfAuthor, Genres.fullNameOfGenre,Books.nameOfBook,Books.yearOfPublish
+                  From Authors inner join Books on Authors.idAuthor = Books.idAuthor 
+                               inner join Genres on Genres.idGenre = Books.idGenre", connection);
+            dataAdapter.Fill(dataSet, "allBooksInfo");
+            dataLibraryGridView.AutoGenerateColumns = true;
+            dataLibraryGridView.DataSource = dataSet;
+            dataLibraryGridView.DataMember = "allBooksInfo";
+
+            dataLibraryGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataLibraryGridView.AllowUserToAddRows = false;
+            connection.Close();
+        }
+
+        private void takeABookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

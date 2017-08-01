@@ -36,15 +36,22 @@
             this.libraryDBDataSet = new LibraryWindowsForms.LibraryDBDataSet();
             this.buttonTakeBook = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.snlskmlcLalalaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addABookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editABookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLibraryGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDBDataSet)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProgName
             // 
             this.labelProgName.AutoSize = true;
             this.labelProgName.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProgName.Location = new System.Drawing.Point(13, 13);
+            this.labelProgName.Location = new System.Drawing.Point(256, 23);
             this.labelProgName.Name = "labelProgName";
             this.labelProgName.Size = new System.Drawing.Size(117, 24);
             this.labelProgName.TabIndex = 0;
@@ -64,7 +71,7 @@
             this.buttonDeleteBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeleteBook.Location = new System.Drawing.Point(646, 132);
             this.buttonDeleteBook.Name = "buttonDeleteBook";
-            this.buttonDeleteBook.Size = new System.Drawing.Size(189, 43);
+            this.buttonDeleteBook.Size = new System.Drawing.Size(135, 44);
             this.buttonDeleteBook.TabIndex = 10;
             this.buttonDeleteBook.Text = "Delete a book";
             this.buttonDeleteBook.UseVisualStyleBackColor = true;
@@ -73,9 +80,9 @@
             // buttonEditBook
             // 
             this.buttonEditBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEditBook.Location = new System.Drawing.Point(646, 196);
+            this.buttonEditBook.Location = new System.Drawing.Point(796, 62);
             this.buttonEditBook.Name = "buttonEditBook";
-            this.buttonEditBook.Size = new System.Drawing.Size(189, 43);
+            this.buttonEditBook.Size = new System.Drawing.Size(135, 44);
             this.buttonEditBook.TabIndex = 13;
             this.buttonEditBook.Text = "Edit";
             this.buttonEditBook.UseVisualStyleBackColor = true;
@@ -84,9 +91,9 @@
             // buttonAddBook
             // 
             this.buttonAddBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddBook.Location = new System.Drawing.Point(646, 257);
+            this.buttonAddBook.Location = new System.Drawing.Point(796, 132);
             this.buttonAddBook.Name = "buttonAddBook";
-            this.buttonAddBook.Size = new System.Drawing.Size(189, 43);
+            this.buttonAddBook.Size = new System.Drawing.Size(135, 44);
             this.buttonAddBook.TabIndex = 15;
             this.buttonAddBook.Text = "Add a book";
             this.buttonAddBook.UseVisualStyleBackColor = true;
@@ -100,9 +107,9 @@
             // buttonTakeBook
             // 
             this.buttonTakeBook.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTakeBook.Location = new System.Drawing.Point(646, 61);
+            this.buttonTakeBook.Location = new System.Drawing.Point(643, 61);
             this.buttonTakeBook.Name = "buttonTakeBook";
-            this.buttonTakeBook.Size = new System.Drawing.Size(189, 43);
+            this.buttonTakeBook.Size = new System.Drawing.Size(138, 45);
             this.buttonTakeBook.TabIndex = 16;
             this.buttonTakeBook.Text = "Take a book";
             this.buttonTakeBook.UseVisualStyleBackColor = true;
@@ -116,11 +123,56 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 17;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(975, 24);
+            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mainToolStripMenuItem
+            // 
+            this.mainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.snlskmlcLalalaToolStripMenuItem,
+            this.deleteBookToolStripMenuItem,
+            this.addABookToolStripMenuItem,
+            this.editABookToolStripMenuItem});
+            this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.mainToolStripMenuItem.Text = "Options";
+            // 
+            // snlskmlcLalalaToolStripMenuItem
+            // 
+            this.snlskmlcLalalaToolStripMenuItem.Name = "snlskmlcLalalaToolStripMenuItem";
+            this.snlskmlcLalalaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.snlskmlcLalalaToolStripMenuItem.Text = "Take a book";
+            // 
+            // deleteBookToolStripMenuItem
+            // 
+            this.deleteBookToolStripMenuItem.Name = "deleteBookToolStripMenuItem";
+            this.deleteBookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteBookToolStripMenuItem.Text = "Delete book";
+            // 
+            // addABookToolStripMenuItem
+            // 
+            this.addABookToolStripMenuItem.Name = "addABookToolStripMenuItem";
+            this.addABookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addABookToolStripMenuItem.Text = "Add a book";
+            // 
+            // editABookToolStripMenuItem
+            // 
+            this.editABookToolStripMenuItem.Name = "editABookToolStripMenuItem";
+            this.editABookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editABookToolStripMenuItem.Text = "Edit a book";
+            // 
             // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 417);
+            this.ClientSize = new System.Drawing.Size(975, 417);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonTakeBook);
             this.Controls.Add(this.buttonAddBook);
@@ -128,10 +180,14 @@
             this.Controls.Add(this.buttonDeleteBook);
             this.Controls.Add(this.dataLibraryGridView);
             this.Controls.Add(this.labelProgName);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "LibraryForm";
             this.Text = "LibraryApp";
             ((System.ComponentModel.ISupportInitialize)(this.dataLibraryGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDBDataSet)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +203,12 @@
         private LibraryDBDataSet libraryDBDataSet;
         private System.Windows.Forms.Button buttonTakeBook;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem snlskmlcLalalaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteBookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addABookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editABookToolStripMenuItem;
     }
 }
 
