@@ -13,7 +13,7 @@ namespace LibraryWindowsForms
             @"Data Source=(LocalDB)\MSSQLLocalDB;
             AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
             Integrated Security=True;Connect Timeout=30");
-        string writePath = @"readersCard.txt";
+       
 
 
         public LibraryForm()
@@ -25,36 +25,27 @@ namespace LibraryWindowsForms
 
         }
 
-        private void buttonTakeBook_Click(object sender, EventArgs e)
-        {
-            int deleteIndex = dataLibraryGridView.SelectedCells[0].RowIndex;
-          
-
-            //!!!!!!!!!!!!!!!
-            using (StreamWriter streamWriter = new StreamWriter(writePath, true, Encoding.Default))
-            {
-                streamWriter.WriteLine();
-            }
-        }
-
-        private void buttonDeleteBook_Click(object sender, EventArgs e)
-        {
-            DeleteBook();
-           // MessageBox.Show("отработал DeleteBook() ");
-            ShowTable();
-           // MessageBox.Show("отработал ShowTable() ");
-        }
-
-        private void buttonEditBook_Click(object sender, EventArgs e)
+        private void takeABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonAddBook_Click(object sender, EventArgs e)
+        private void deleteBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            deleteForm deleteForm = new deleteForm();
+            deleteForm.Show();
+        }
+
+        private void addABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void editABookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+  
         private void DeleteBook()
         {            
             SqlCommand deleteCommand = new SqlCommand(
@@ -83,9 +74,19 @@ namespace LibraryWindowsForms
             connection.Close();
         }
 
-        private void takeABookToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
+
+        //private void buttonTakeBook_Click(object sender, EventArgs e)
+        //{
+        //    int deleteIndex = dataLibraryGridView.SelectedCells[0].RowIndex;
+
+
+        //    //!!!!!!!!!!!!!!!
+        //    using (StreamWriter streamWriter = new StreamWriter(writePath, true, Encoding.Default))
+        //    {
+        //        streamWriter.WriteLine();
+        //    }
+        //}
+
     }
 }
