@@ -13,12 +13,33 @@ namespace LibraryWindowsForms
             @"Data Source=(LocalDB)\MSSQLLocalDB;
             AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
             Integrated Security=True;Connect Timeout=30");
-
         public deleteForm()
         {
             InitializeComponent();
+            loadBookList();
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DeleteBook();
+            loadBookList();
+        }
 
 
+        private void DeleteBook()
+        {
+            SqlCommand deleteCommand = new SqlCommand(
+                @"delete Books 
+                   where nameOfBook like '" + comboBox1.Text + "'", connection);
+                                    
+            connection.Open();
+            deleteCommand.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        private void loadBookList()
+        {
             connection.Open();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(@"select * from Books", connection);
             DataTable bookNameTable = new DataTable();
@@ -28,11 +49,6 @@ namespace LibraryWindowsForms
             comboBox1.DataSource = bookNameTable;
             comboBox1.DisplayMember = "nameOfBook";
             comboBox1.ValueMember = "idBook";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = comboBox1.Text;
         }
     }
 }

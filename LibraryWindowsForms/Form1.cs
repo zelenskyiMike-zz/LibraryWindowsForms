@@ -7,22 +7,20 @@ using System.IO;
 
 namespace LibraryWindowsForms
 {
+
     public partial class LibraryForm : Form
     {
         SqlConnection connection = new SqlConnection(
             @"Data Source=(LocalDB)\MSSQLLocalDB;
             AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
             Integrated Security=True;Connect Timeout=30");
-       
 
+        deleteForm deleteForm;
 
         public LibraryForm()
         {
             InitializeComponent();
-
             ShowTable();
-
-
         }
 
         private void takeABookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,38 +28,40 @@ namespace LibraryWindowsForms
 
         }
 
+        
         private void deleteBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            deleteForm deleteForm = new deleteForm();
-            deleteForm.Show();
+            if (deleteForm == null || deleteForm.IsDisposed)
+            {
+                deleteForm = new deleteForm();
+                deleteForm.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("This window has already been opened", "BigLibrary");
+            }
+            
         }
 
         private void addABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void editABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-  
-        private void DeleteBook()
-        {            
-            SqlCommand deleteCommand = new SqlCommand(
-                @"delete Books 
-                  where idBook = " + dataLibraryGridView.CurrentRow.Index + "", connection);
-            connection.Open();
-            deleteCommand.ExecuteNonQuery();
-            connection.Close();
-        }
-        private void ShowTable()
+
+
+        public void ShowTable()
         {
             connection.Open();
             DataSet dataSet = new DataSet();
             DataTable bookViewTable = new DataTable();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(
-                @"Select Books.idBook, Authors.fullNameOfAuthor, Genres.fullNameOfGenre,Books.nameOfBook,Books.yearOfPublish
+                @"Select Authors.fullNameOfAuthor, Genres.fullNameOfGenre,Books.nameOfBook,Books.yearOfPublish
                   From Authors inner join Books on Authors.idAuthor = Books.idAuthor 
                                inner join Genres on Genres.idGenre = Books.idGenre", connection);
             dataAdapter.Fill(dataSet, "allBooksInfo");
