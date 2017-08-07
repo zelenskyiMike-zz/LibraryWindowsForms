@@ -1,6 +1,6 @@
 ﻿namespace LibraryWindowsForms
 {
-    partial class deleteForm
+    partial class DeleteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxShowBookName = new System.Windows.Forms.ComboBox();
             this.libraryDBDataSet = new LibraryWindowsForms.LibraryDBDataSet();
             this.libraryDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -50,14 +50,14 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // comboBoxShowBookName
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.libraryDBDataSet, "Books.nameOfBook", true));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(13, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(259, 21);
-            this.comboBox1.TabIndex = 1;
+            this.comboBoxShowBookName.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.libraryDBDataSet, "Books.nameOfBook", true));
+            this.comboBoxShowBookName.FormattingEnabled = true;
+            this.comboBoxShowBookName.Location = new System.Drawing.Point(13, 22);
+            this.comboBoxShowBookName.Name = "comboBoxShowBookName";
+            this.comboBoxShowBookName.Size = new System.Drawing.Size(259, 21);
+            this.comboBoxShowBookName.TabIndex = 1;
             // 
             // libraryDBDataSet
             // 
@@ -86,16 +86,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Choose a book which you want to delete";
             // 
-            // deleteForm
+            // DeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(291, 120);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxShowBookName);
             this.Controls.Add(this.buttonDelete);
-            this.Name = "deleteForm";
+            this.Name = "DeleteForm";
             this.Text = "DeleteForm";
             ((System.ComponentModel.ISupportInitialize)(this.libraryDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDBDataSetBindingSource)).EndInit();
@@ -107,7 +107,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxShowBookName;
         private LibraryDBDataSet libraryDBDataSet;
         private System.Windows.Forms.BindingSource libraryDBDataSetBindingSource;
         private System.Windows.Forms.Label label1;

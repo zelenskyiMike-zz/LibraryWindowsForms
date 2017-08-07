@@ -7,13 +7,13 @@ using System.IO;
 
 namespace LibraryWindowsForms
 {
-    public partial class deleteForm : Form
+    public partial class DeleteForm : Form
     {
         SqlConnection connection = new SqlConnection(
             @"Data Source=(LocalDB)\MSSQLLocalDB;
             AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
             Integrated Security=True;Connect Timeout=30");
-        public deleteForm()
+        public DeleteForm()
         {
             InitializeComponent();
             loadBookList();
@@ -31,7 +31,7 @@ namespace LibraryWindowsForms
         {
             SqlCommand deleteCommand = new SqlCommand(
                 @"delete Books 
-                   where nameOfBook like '" + comboBox1.Text + "'", connection);
+                   where nameOfBook like '" + comboBoxShowBookName.Text + "'", connection);
                                     
             connection.Open();
             deleteCommand.ExecuteNonQuery();
@@ -46,9 +46,10 @@ namespace LibraryWindowsForms
             dataAdapter.Fill(bookNameTable);
             connection.Close();
 
-            comboBox1.DataSource = bookNameTable;
-            comboBox1.DisplayMember = "nameOfBook";
-            comboBox1.ValueMember = "idBook";
+            comboBoxShowBookName.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxShowBookName.DataSource = bookNameTable;
+            comboBoxShowBookName.DisplayMember = "nameOfBook";
+            comboBoxShowBookName.ValueMember = "idBook";
         }
     }
 }

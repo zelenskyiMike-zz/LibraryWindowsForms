@@ -8,3 +8,4 @@ F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.exe
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.pdb
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.LibraryForm.resources
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.deleteForm.resources
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.AddForm.resources

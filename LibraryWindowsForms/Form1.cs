@@ -15,7 +15,8 @@ namespace LibraryWindowsForms
             AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
             Integrated Security=True;Connect Timeout=30");
 
-        deleteForm deleteForm;
+        DeleteForm deleteForm;
+        AddForm addForm;
 
         public LibraryForm()
         {
@@ -33,7 +34,7 @@ namespace LibraryWindowsForms
         {
             if (deleteForm == null || deleteForm.IsDisposed)
             {
-                deleteForm = new deleteForm();
+                deleteForm = new DeleteForm();
                 deleteForm.Show();
                 
             }
@@ -46,7 +47,16 @@ namespace LibraryWindowsForms
 
         private void addABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            if (addForm == null || addForm.IsDisposed)
+            {
+                addForm = new AddForm();
+                addForm.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("This window has already been opened", "BigLibrary");
+            }
         }
 
         private void editABookToolStripMenuItem_Click(object sender, EventArgs e)
