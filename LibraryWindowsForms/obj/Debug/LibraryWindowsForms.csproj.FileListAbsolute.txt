@@ -9,3 +9,5 @@ F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.pdb
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.LibraryForm.resources
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.deleteForm.resources
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.AddForm.resources
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.AddAuthorForm.resources
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.AddGenreForm.resources

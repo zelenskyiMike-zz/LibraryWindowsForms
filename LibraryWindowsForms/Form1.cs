@@ -73,7 +73,8 @@ namespace LibraryWindowsForms
             SqlDataAdapter dataAdapter = new SqlDataAdapter(
                 @"Select Authors.fullNameOfAuthor, Genres.fullNameOfGenre,Books.nameOfBook,Books.yearOfPublish
                   From Authors inner join Books on Authors.idAuthor = Books.idAuthor 
-                               inner join Genres on Genres.idGenre = Books.idGenre", connection);
+                               inner join Genres on Genres.idGenre = Books.idGenre
+                               order by Books.idAuthor", connection);
             dataAdapter.Fill(dataSet, "allBooksInfo");
             dataLibraryGridView.AutoGenerateColumns = true;
             dataLibraryGridView.DataSource = dataSet;

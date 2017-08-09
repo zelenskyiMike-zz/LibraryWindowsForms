@@ -33,12 +33,12 @@
             this.textBoxNameOfBook = new System.Windows.Forms.TextBox();
             this.textBoxYearOfPublish = new System.Windows.Forms.TextBox();
             this.buttonAddAuthor = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.labelAuthor = new System.Windows.Forms.Label();
+            this.labelNameOfBook = new System.Windows.Forms.Label();
+            this.labelYear = new System.Windows.Forms.Label();
+            this.labelGenre = new System.Windows.Forms.Label();
             this.buttonAddABook = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.buttonAddGenre = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxAuthor
@@ -82,15 +82,41 @@
             this.buttonAddAuthor.UseVisualStyleBackColor = true;
             this.buttonAddAuthor.Click += new System.EventHandler(this.buttonAddAuthor_Click);
             // 
-            // button1
+            // labelAuthor
             // 
-            this.button1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(241, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 32);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Add Genre";
-            this.button1.UseVisualStyleBackColor = true;
+            this.labelAuthor.AutoSize = true;
+            this.labelAuthor.Location = new System.Drawing.Point(12, 29);
+            this.labelAuthor.Name = "labelAuthor";
+            this.labelAuthor.Size = new System.Drawing.Size(177, 13);
+            this.labelAuthor.TabIndex = 8;
+            this.labelAuthor.Text = "Choose an author or add a new one";
+            // 
+            // labelNameOfBook
+            // 
+            this.labelNameOfBook.AutoSize = true;
+            this.labelNameOfBook.Location = new System.Drawing.Point(12, 125);
+            this.labelNameOfBook.Name = "labelNameOfBook";
+            this.labelNameOfBook.Size = new System.Drawing.Size(118, 13);
+            this.labelNameOfBook.TabIndex = 9;
+            this.labelNameOfBook.Text = "Enter the name of book";
+            // 
+            // labelYear
+            // 
+            this.labelYear.AutoSize = true;
+            this.labelYear.Location = new System.Drawing.Point(12, 173);
+            this.labelYear.Name = "labelYear";
+            this.labelYear.Size = new System.Drawing.Size(121, 13);
+            this.labelYear.TabIndex = 10;
+            this.labelYear.Text = "Enter the year of publish";
+            // 
+            // labelGenre
+            // 
+            this.labelGenre.AutoSize = true;
+            this.labelGenre.Location = new System.Drawing.Point(12, 77);
+            this.labelGenre.Name = "labelGenre";
+            this.labelGenre.Size = new System.Drawing.Size(168, 13);
+            this.labelGenre.TabIndex = 11;
+            this.labelGenre.Text = "Choose a genre or add a new one";
             // 
             // buttonAddABook
             // 
@@ -98,58 +124,33 @@
             this.buttonAddABook.Location = new System.Drawing.Point(12, 221);
             this.buttonAddABook.Name = "buttonAddABook";
             this.buttonAddABook.Size = new System.Drawing.Size(118, 32);
-            this.buttonAddABook.TabIndex = 6;
+            this.buttonAddABook.TabIndex = 12;
             this.buttonAddABook.Text = "Add a book";
             this.buttonAddABook.UseVisualStyleBackColor = true;
-            this.buttonAddABook.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAddABook.Click += new System.EventHandler(this.buttonAddABook_Click);
             // 
-            // label1
+            // buttonAddGenre
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Choose an author or add a new one";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 125);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Enter the name of book";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 173);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Enter the year of publish";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Choose a genre or add a new one";
+            this.buttonAddGenre.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddGenre.Location = new System.Drawing.Point(241, 93);
+            this.buttonAddGenre.Name = "buttonAddGenre";
+            this.buttonAddGenre.Size = new System.Drawing.Size(118, 32);
+            this.buttonAddGenre.TabIndex = 13;
+            this.buttonAddGenre.Text = "Add Genre";
+            this.buttonAddGenre.UseVisualStyleBackColor = true;
+            this.buttonAddGenre.Click += new System.EventHandler(this.buttonAddGenre_Click);
             // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 265);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonAddGenre);
             this.Controls.Add(this.buttonAddABook);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.labelGenre);
+            this.Controls.Add(this.labelYear);
+            this.Controls.Add(this.labelNameOfBook);
+            this.Controls.Add(this.labelAuthor);
             this.Controls.Add(this.buttonAddAuthor);
             this.Controls.Add(this.textBoxYearOfPublish);
             this.Controls.Add(this.textBoxNameOfBook);
@@ -169,11 +170,11 @@
         private System.Windows.Forms.TextBox textBoxNameOfBook;
         private System.Windows.Forms.TextBox textBoxYearOfPublish;
         private System.Windows.Forms.Button buttonAddAuthor;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelAuthor;
+        private System.Windows.Forms.Label labelNameOfBook;
+        private System.Windows.Forms.Label labelYear;
+        private System.Windows.Forms.Label labelGenre;
         private System.Windows.Forms.Button buttonAddABook;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonAddGenre;
     }
 }
