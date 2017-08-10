@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text;
 using System.IO;
+using System.Drawing;
 
 namespace LibraryWindowsForms
 {
@@ -24,9 +25,10 @@ namespace LibraryWindowsForms
         {
             DeleteBook();
             loadBookList();
+            label3.Text = "Deleted";
+            label3.ForeColor = Color.Green;
         }
-
-
+        
         private void DeleteBook()
         {
             SqlCommand deleteCommand = new SqlCommand(

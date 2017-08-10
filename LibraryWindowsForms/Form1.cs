@@ -17,6 +17,7 @@ namespace LibraryWindowsForms
 
         DeleteForm deleteForm;
         AddForm addForm;
+        EditForm editForm;
 
         public LibraryForm()
         {
@@ -61,7 +62,16 @@ namespace LibraryWindowsForms
 
         private void editABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (editForm == null || editForm.IsDisposed)
+            {
+                editForm = new EditForm();
+                editForm.Show();
 
+            }
+            else
+            {
+                MessageBox.Show("This window has already been opened", "BigLibrary");
+            }
         }
 
 
