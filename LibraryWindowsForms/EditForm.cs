@@ -28,7 +28,7 @@ namespace LibraryWindowsForms
         {
             LoadGenres();
             LoadAuthors();
-
+            LoadYearOfPublish();
         }
 
         private void LoadBookList()
@@ -44,25 +44,28 @@ namespace LibraryWindowsForms
             comboBoxChooseABook.DisplayMember = "nameOfBook";
             comboBoxChooseABook.ValueMember = "idBook";
         }
-        private void ChooseBookInfo(out int idAuthor, out int idGenre)
+        private void ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish)
         {
             //int idAuthor;
             //int idGenre;
 
             SqlCommand takeGenreID = new SqlCommand(
-                       @"select idGenre from Books where fullNameOfGenre like'" + comboBoxChooseABook.Text + "'", connection);
+                       @"select idGenre from Books where nameOfBook like'" + comboBoxChooseABook.Text + "'", connection);
             SqlCommand takeAuthorID = new SqlCommand(
-                       @"select idAuthor from Books where fullNameOfAuthor like'" + comboBoxChooseABook.Text + "'", connection);
+                       @"select idAuthor from Books where nameOfBook like'" + comboBoxChooseABook.Text + "'", connection);
+            SqlCommand takeYearOfPublish = new SqlCommand(
+                       @"select YearOfPublish from Books where nameOfBook like'" + comboBoxChooseABook.Text + "'", connection);
 
             connection.Open();
             idAuthor = (int)takeAuthorID.ExecuteScalar();
             idGenre = (int)takeGenreID.ExecuteScalar();
+            yearOfPublish = (int)takeYearOfPublish.ExecuteScalar();
             connection.Close();
         }
 
         private void LoadGenres()
         {
-            ChooseBookInfo(out int idAuthor, out int idGenre);
+            ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish);
 
             connection.Open();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(@"select * from Genres", connection);
@@ -74,11 +77,11 @@ namespace LibraryWindowsForms
             comboBoxChooseAGenre.DataSource = genreNameTable;
             comboBoxChooseAGenre.DisplayMember = "fullNameOfGenre";
             comboBoxChooseAGenre.ValueMember = "idGenre";
-            comboBoxChooseAGenre.SelectedIndex = idGenre;
+            comboBoxChooseAGenre.SelectedIndex = idGenre-1;
         }
         private void LoadAuthors()
         {
-            ChooseBookInfo(out int idAuthor, out int idGenre);
+            ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish);
 
             connection.Open();
             SqlDataAdapter dataAdapter = new SqlDataAdapter(@"select * from Authors", connection);
@@ -90,7 +93,19 @@ namespace LibraryWindowsForms
             comboBoxChooseAnAuthor.DataSource = authorNameTable;
             comboBoxChooseAnAuthor.DisplayMember = "fullNameOfAuthor";
             comboBoxChooseAnAuthor.ValueMember = "idAuthor";
-            comboBoxChooseAnAuthor.SelectedIndex = idAuthor;
+            comboBoxChooseAnAuthor.SelectedIndex = idAuthor-1;
+        }
+        private void LoadYearOfPublish()
+        {
+            ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish);
+
+            connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(@"select * from Books", connection);
+            DataTable yearOfPublishTable = new DataTable();
+            dataAdapter.Fill(yearOfPublishTable);
+            connection.Close();
+
+            textBoxTitleOfBookDisplay.Text = yearOfPublish.ToString();
         }
     }
 }
