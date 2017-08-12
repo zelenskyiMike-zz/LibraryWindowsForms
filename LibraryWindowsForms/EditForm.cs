@@ -26,10 +26,17 @@ namespace LibraryWindowsForms
 
         private void buttonChoose_Click(object sender, EventArgs e)
         {
-            LoadGenres();
-            LoadAuthors();
-            LoadYearOfPublish();
+            LoadAllBookInfo();
         }
+        private void buttonEditBook_Click(object sender, EventArgs e)
+        {
+
+            UpdateAllBookInfo();
+            
+        }
+
+
+
 
         private void LoadBookList()
         {
@@ -63,49 +70,70 @@ namespace LibraryWindowsForms
             connection.Close();
         }
 
-        private void LoadGenres()
+        private void LoadAllBookInfo()
         {
             ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish);
 
             connection.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(@"select * from Genres", connection);
+            SqlDataAdapter genresDataAdapter = new SqlDataAdapter(@"select * from Genres", connection);
             DataTable genreNameTable = new DataTable();
-            dataAdapter.Fill(genreNameTable);
-            connection.Close();
+            genresDataAdapter.Fill(genreNameTable);
 
+            SqlDataAdapter authorsDataAdapter = new SqlDataAdapter(@"select * from Authors", connection);
+            DataTable authorNameTable = new DataTable();
+            authorsDataAdapter.Fill(authorNameTable);
+
+            SqlDataAdapter yearDataAdapter = new SqlDataAdapter(@"select * from Books", connection);
+            DataTable yearOfPublishTable = new DataTable();
+            yearDataAdapter.Fill(yearOfPublishTable);
+
+            connection.Close();
+            
             comboBoxChooseAGenre.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxChooseAGenre.DataSource = genreNameTable;
             comboBoxChooseAGenre.DisplayMember = "fullNameOfGenre";
             comboBoxChooseAGenre.ValueMember = "idGenre";
-            comboBoxChooseAGenre.SelectedIndex = idGenre-1;
-        }
-        private void LoadAuthors()
-        {
-            ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish);
+            comboBoxChooseAGenre.SelectedIndex = idGenre - 1;
 
-            connection.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(@"select * from Authors", connection);
-            DataTable authorNameTable = new DataTable();
-            dataAdapter.Fill(authorNameTable);
-            connection.Close();
 
             comboBoxChooseAnAuthor.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxChooseAnAuthor.DataSource = authorNameTable;
             comboBoxChooseAnAuthor.DisplayMember = "fullNameOfAuthor";
             comboBoxChooseAnAuthor.ValueMember = "idAuthor";
-            comboBoxChooseAnAuthor.SelectedIndex = idAuthor-1;
+            comboBoxChooseAnAuthor.SelectedIndex = idAuthor - 1;
+            
+           
+            textBoxYearOfPublishDisplay.Text = yearOfPublish.ToString();
+
         }
-        private void LoadYearOfPublish()
+       
+        private void UpdateAllBookInfo()
         {
-            ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish);
+
+
+            SqlCommand UpdateTitle = new SqlCommand(
+                      @"update Books set nameOfBook = '" + comboBoxChooseABook.Text + "'" +
+                      " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
+            SqlCommand UpdateGenre = new SqlCommand(
+                       @"update Genres set fullNameOfGenre = '" + comboBoxChooseAGenre.Text + "'" +
+                       " where idGenre = " + comboBoxChooseAGenre.SelectedIndex + 1 + "", connection);
+            SqlCommand UpdateAuthor = new SqlCommand(
+                       @"update Authors set fullNameOfAuthor = '" + comboBoxChooseAnAuthor.Text + "'" +
+                       " where idAuthor = " + comboBoxChooseAnAuthor.SelectedIndex + 1 + "", connection);
+            SqlCommand UpdateYearOfPublish = new SqlCommand(
+                       @"update Books set yearOfPublish = " + textBoxYearOfPublishDisplay.Text + "" +
+                       "  where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
 
             connection.Open();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(@"select * from Books", connection);
-            DataTable yearOfPublishTable = new DataTable();
-            dataAdapter.Fill(yearOfPublishTable);
+            UpdateTitle.ExecuteNonQuery();
+            UpdateAuthor.ExecuteNonQuery();
+            UpdateGenre.ExecuteNonQuery();
+            UpdateYearOfPublish.ExecuteNonQuery();
             connection.Close();
 
-            textBoxTitleOfBookDisplay.Text = yearOfPublish.ToString();
+            MessageBox.Show("Success");
+            //label1.Text = yearOfPublish.ToString();
+            //label2.Text = comboBoxChooseABook.SelectedIndex.ToString() ;
         }
     }
 }

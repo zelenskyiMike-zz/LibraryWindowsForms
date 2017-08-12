@@ -38,6 +38,7 @@
             this.deleteBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addABookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editABookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataLibraryGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDBDataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -123,11 +124,22 @@
             this.editABookToolStripMenuItem.Text = "Edit a book";
             this.editABookToolStripMenuItem.Click += new System.EventHandler(this.editABookToolStripMenuItem_Click);
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(551, 18);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.TabIndex = 19;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
             // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 417);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataLibraryGridView);
             this.Controls.Add(this.labelProgName);
@@ -156,6 +168,7 @@
         private System.Windows.Forms.ToolStripMenuItem deleteBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addABookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editABookToolStripMenuItem;
+        private System.Windows.Forms.Button buttonUpdate;
     }
 }
 

@@ -30,13 +30,15 @@
         {
             this.comboBoxChooseABook = new System.Windows.Forms.ComboBox();
             this.buttonChoose = new System.Windows.Forms.Button();
-            this.textBoxTitleOfBookDisplay = new System.Windows.Forms.TextBox();
+            this.textBoxYearOfPublishDisplay = new System.Windows.Forms.TextBox();
             this.buttonEditBook = new System.Windows.Forms.Button();
             this.comboBoxChooseAGenre = new System.Windows.Forms.ComboBox();
             this.buttonEditTitle = new System.Windows.Forms.Button();
             this.buttonEditGenre = new System.Windows.Forms.Button();
             this.comboBoxChooseAnAuthor = new System.Windows.Forms.ComboBox();
             this.buttonEditAnAuthor = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxChooseABook
@@ -58,12 +60,12 @@
             this.buttonChoose.UseVisualStyleBackColor = true;
             this.buttonChoose.Click += new System.EventHandler(this.buttonChoose_Click);
             // 
-            // textBoxTitleOfBookDisplay
+            // textBoxYearOfPublishDisplay
             // 
-            this.textBoxTitleOfBookDisplay.Location = new System.Drawing.Point(12, 154);
-            this.textBoxTitleOfBookDisplay.Name = "textBoxTitleOfBookDisplay";
-            this.textBoxTitleOfBookDisplay.Size = new System.Drawing.Size(181, 20);
-            this.textBoxTitleOfBookDisplay.TabIndex = 3;
+            this.textBoxYearOfPublishDisplay.Location = new System.Drawing.Point(12, 154);
+            this.textBoxYearOfPublishDisplay.Name = "textBoxYearOfPublishDisplay";
+            this.textBoxYearOfPublishDisplay.Size = new System.Drawing.Size(181, 20);
+            this.textBoxYearOfPublishDisplay.TabIndex = 3;
             // 
             // buttonEditBook
             // 
@@ -74,6 +76,7 @@
             this.buttonEditBook.TabIndex = 4;
             this.buttonEditBook.Text = "Edit a book";
             this.buttonEditBook.UseVisualStyleBackColor = true;
+            this.buttonEditBook.Click += new System.EventHandler(this.buttonEditBook_Click);
             // 
             // comboBoxChooseAGenre
             // 
@@ -121,18 +124,38 @@
             this.buttonEditAnAuthor.Text = "Edit author";
             this.buttonEditAnAuthor.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(305, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(305, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "label2";
+            // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 238);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonEditAnAuthor);
             this.Controls.Add(this.comboBoxChooseAnAuthor);
             this.Controls.Add(this.buttonEditGenre);
             this.Controls.Add(this.buttonEditTitle);
             this.Controls.Add(this.comboBoxChooseAGenre);
             this.Controls.Add(this.buttonEditBook);
-            this.Controls.Add(this.textBoxTitleOfBookDisplay);
+            this.Controls.Add(this.textBoxYearOfPublishDisplay);
             this.Controls.Add(this.buttonChoose);
             this.Controls.Add(this.comboBoxChooseABook);
             this.Name = "EditForm";
@@ -146,12 +169,14 @@
 
         private System.Windows.Forms.ComboBox comboBoxChooseABook;
         private System.Windows.Forms.Button buttonChoose;
-        private System.Windows.Forms.TextBox textBoxTitleOfBookDisplay;
+        private System.Windows.Forms.TextBox textBoxYearOfPublishDisplay;
         private System.Windows.Forms.Button buttonEditBook;
         private System.Windows.Forms.ComboBox comboBoxChooseAGenre;
         private System.Windows.Forms.Button buttonEditTitle;
         private System.Windows.Forms.Button buttonEditGenre;
         private System.Windows.Forms.ComboBox comboBoxChooseAnAuthor;
         private System.Windows.Forms.Button buttonEditAnAuthor;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

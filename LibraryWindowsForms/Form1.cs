@@ -25,6 +25,10 @@ namespace LibraryWindowsForms
             ShowTable();
         }
 
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            ShowTable();
+        }
         private void takeABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -94,6 +98,8 @@ namespace LibraryWindowsForms
             dataLibraryGridView.AllowUserToAddRows = false;
             connection.Close();
         }
+
+       
 
 
 
