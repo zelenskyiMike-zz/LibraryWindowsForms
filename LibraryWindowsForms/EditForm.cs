@@ -17,6 +17,12 @@ namespace LibraryWindowsForms
             @"Data Source=(LocalDB)\MSSQLLocalDB;
             AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
             Integrated Security=True;Connect Timeout=30");
+
+        EditTitleForm editTitleForm;
+
+        public string bookTitlePresentValue;
+        protected string authorNamePresentValue;
+        protected string genreTitlePresentValue;
         public EditForm()
         {
             InitializeComponent();
@@ -27,6 +33,8 @@ namespace LibraryWindowsForms
         private void buttonChoose_Click(object sender, EventArgs e)
         {
             LoadAllBookInfo();
+
+            bookTitlePresentValue = comboBoxChooseABook.Text;
         }
         private void buttonEditBook_Click(object sender, EventArgs e)
         {
@@ -35,7 +43,13 @@ namespace LibraryWindowsForms
             
         }
 
-
+        private void buttonEditTitle_Click(object sender, EventArgs e)
+        {
+            editTitleForm = new EditTitleForm();
+            this.Hide();
+            editTitleForm.ShowDialog();
+            this.Show();
+        }
 
 
         private void LoadBookList()
@@ -109,17 +123,20 @@ namespace LibraryWindowsForms
        
         private void UpdateAllBookInfo()
         {
+            //update Books
+            //set idGenre = 1
+            //where nameOfBook like 'Повесть новых лет'
 
 
             SqlCommand UpdateTitle = new SqlCommand(
                       @"update Books set nameOfBook = '" + comboBoxChooseABook.Text + "'" +
                       " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
             SqlCommand UpdateGenre = new SqlCommand(
-                       @"update Genres set fullNameOfGenre = '" + comboBoxChooseAGenre.Text + "'" +
-                       " where idGenre = " + comboBoxChooseAGenre.SelectedIndex + 1 + "", connection);
+                       @"update Books set Books.idGenre = " + comboBoxChooseAGenre.SelectedIndex+1+ "" +
+                       " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
             SqlCommand UpdateAuthor = new SqlCommand(
-                       @"update Authors set fullNameOfAuthor = '" + comboBoxChooseAnAuthor.Text + "'" +
-                       " where idAuthor = " + comboBoxChooseAnAuthor.SelectedIndex + 1 + "", connection);
+                       @"update Books set idAuthor = " + comboBoxChooseAnAuthor.SelectedIndex+1 + "" +
+                       " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
             SqlCommand UpdateYearOfPublish = new SqlCommand(
                        @"update Books set yearOfPublish = " + textBoxYearOfPublishDisplay.Text + "" +
                        "  where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
@@ -127,13 +144,13 @@ namespace LibraryWindowsForms
             connection.Open();
             UpdateTitle.ExecuteNonQuery();
             UpdateAuthor.ExecuteNonQuery();
-            UpdateGenre.ExecuteNonQuery();
+           // UpdateGenre.ExecuteNonQuery();
             UpdateYearOfPublish.ExecuteNonQuery();
             connection.Close();
 
             MessageBox.Show("Success");
-            //label1.Text = yearOfPublish.ToString();
-            //label2.Text = comboBoxChooseABook.SelectedIndex.ToString() ;
+            //label1.Text = comboBoxChooseAGenre.Text;
+            //label2.Text = comboBoxChooseAGenre.SelectedIndex.ToString();
         }
     }
 }

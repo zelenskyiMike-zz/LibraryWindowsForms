@@ -12,3 +12,4 @@ F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.AddForm
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.AddAuthorForm.resources
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.AddGenreForm.resources
 F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.EditForm.resources
+F:\LibraryWindowsForms\LibraryWindowsForms\obj\Debug\LibraryWindowsForms.EditTitleForm.resources

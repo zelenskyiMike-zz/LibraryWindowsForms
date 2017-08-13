@@ -70,7 +70,7 @@
             // buttonEditBook
             // 
             this.buttonEditBook.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEditBook.Location = new System.Drawing.Point(12, 195);
+            this.buttonEditBook.Location = new System.Drawing.Point(199, 147);
             this.buttonEditBook.Name = "buttonEditBook";
             this.buttonEditBook.Size = new System.Drawing.Size(99, 31);
             this.buttonEditBook.TabIndex = 4;
@@ -95,6 +95,7 @@
             this.buttonEditTitle.TabIndex = 6;
             this.buttonEditTitle.Text = "Edit title";
             this.buttonEditTitle.UseVisualStyleBackColor = true;
+            this.buttonEditTitle.Click += new System.EventHandler(this.buttonEditTitle_Click);
             // 
             // buttonEditGenre
             // 
