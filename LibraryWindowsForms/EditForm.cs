@@ -20,37 +20,28 @@ namespace LibraryWindowsForms
 
         EditTitleForm editTitleForm;
 
-        public string bookTitlePresentValue;
-        protected string authorNamePresentValue;
-        protected string genreTitlePresentValue;
+
         public EditForm()
         {
             InitializeComponent();
             LoadBookList();
         }
 
-
         private void buttonChoose_Click(object sender, EventArgs e)
         {
             LoadAllBookInfo();
-
-            bookTitlePresentValue = comboBoxChooseABook.Text;
         }
         private void buttonEditBook_Click(object sender, EventArgs e)
         {
-
             UpdateAllBookInfo();
-            
         }
 
         private void buttonEditTitle_Click(object sender, EventArgs e)
         {
             editTitleForm = new EditTitleForm();
-            this.Hide();
             editTitleForm.ShowDialog();
-            this.Show();
+            
         }
-
 
         private void LoadBookList()
         {
@@ -144,7 +135,7 @@ namespace LibraryWindowsForms
             connection.Open();
             UpdateTitle.ExecuteNonQuery();
             UpdateAuthor.ExecuteNonQuery();
-           // UpdateGenre.ExecuteNonQuery();
+            UpdateGenre.ExecuteNonQuery();
             UpdateYearOfPublish.ExecuteNonQuery();
             connection.Close();
 

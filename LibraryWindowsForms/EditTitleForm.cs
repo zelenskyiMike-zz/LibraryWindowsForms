@@ -12,13 +12,15 @@ namespace LibraryWindowsForms
 {
     public partial class EditTitleForm : Form
     {
+       
         public EditTitleForm()
         {
             InitializeComponent();
+        }
 
-            EditForm editForm = new EditForm();
-
-            textBoxTitleOfBookValue.Text = editForm.bookTitlePresentValue;
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

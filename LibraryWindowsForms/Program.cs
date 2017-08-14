@@ -19,4 +19,7 @@ namespace LibraryWindowsForms
             Application.Run(new LibraryForm());
         }
     }
+
+
+    public delegate void giveInformationDelegate(string infoAboutTitle);
 }
