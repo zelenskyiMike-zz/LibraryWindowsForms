@@ -14,9 +14,8 @@ namespace LibraryWindowsForms
     public partial class EditForm : Form
     {
         SqlConnection connection = new SqlConnection(
-            @"Data Source=(LocalDB)\MSSQLLocalDB;
-            AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
-            Integrated Security=True;Connect Timeout=30");
+            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\LibraryWindowsForms\LibraryDB.mdf;
+              Integrated Security=True;Connect Timeout=30");
 
         EditTitleForm editTitleForm;
 
@@ -25,6 +24,8 @@ namespace LibraryWindowsForms
         {
             InitializeComponent();
             LoadBookList();
+
+            buttonEditTitle.Click += new EventHandler(buttonEditTitle_Click);
         }
 
         private void buttonChoose_Click(object sender, EventArgs e)
@@ -39,10 +40,17 @@ namespace LibraryWindowsForms
         private void buttonEditTitle_Click(object sender, EventArgs e)
         {
             editTitleForm = new EditTitleForm();
+
+           
             editTitleForm.ShowDialog();
             
         }
 
+
+        void editTitleForm_sendDataFromFormEvent()
+        {
+
+        }
         private void LoadBookList()
         {
             connection.Open();

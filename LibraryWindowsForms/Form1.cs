@@ -11,9 +11,8 @@ namespace LibraryWindowsForms
     public partial class LibraryForm : Form
     {
         SqlConnection connection = new SqlConnection(
-            @"Data Source=(LocalDB)\MSSQLLocalDB;
-            AttachDbFilename= C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\LibraryDB.mdf;
-            Integrated Security=True;Connect Timeout=30");
+            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\LibraryWindowsForms\LibraryDB.mdf;
+             Integrated Security=True;Connect Timeout=30");
 
         DeleteForm deleteForm;
         AddForm addForm;

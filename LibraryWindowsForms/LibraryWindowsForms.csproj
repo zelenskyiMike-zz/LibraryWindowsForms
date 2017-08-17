@@ -107,6 +107,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraryDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="LibraryDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryDBDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddAuthorForm.resx">
@@ -149,6 +154,17 @@
     </None>
     <None Include="LibraryDBDataSet.xss">
       <DependentUpon>LibraryDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LibraryDBDataSet1.xsc">
+      <DependentUpon>LibraryDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="LibraryDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LibraryDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LibraryDBDataSet1.xss">
+      <DependentUpon>LibraryDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
