@@ -18,45 +18,62 @@ namespace LibraryWindowsForms
            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\LibraryWindowsForms\LibraryDB.mdf;
              Integrated Security=True;Connect Timeout=30");
 
+        public event EventHandler<ClickingEventArgs> Clicking;
+
+        
         AddAuthorForm addAuthorForm;
         AddGenreForm addGenreForm;
+        
+
         public AddForm()
         {
             InitializeComponent();
             LoadAuthors();
             LoadGenres();
-
+            
         }
 
-        private void buttonAddABook_Click(object sender, EventArgs e)
+       
+
+        public void buttonAddABook_Click(object sender, EventArgs e)
         {
-            string labelYearText = labelYear.Text;
-            //make a table with years and a comboBox
-            Regex checkOldYearsEnter = new Regex(@"^[1]{1}[0-9]{3}");
-            Regex checkNewYearEnter = new Regex(@"^[2]{1}[0]{1}[0]{1}[0-9]{1}");
-            Regex checkNewestYearEnter = new Regex(@"^[2]{1}[0]{1}[1]{1}[0-7]{1}");
 
-            if (textBoxNameOfBook.Text == "")
-            {
-                labelNameOfBook.ForeColor = Color.Red;
-            }
+            bool isClicked = false;
 
-            if (!checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || !checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
-                !checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text))
-            {
-                labelYear.ForeColor = Color.Red;
-            }
+            if (Clicking != null)
+                Clicking(this, new ClickingEventArgs(isClicked = true));
+            //    string labelYearText = labelYear.Text;
 
-            if (checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
-                checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text) && textBoxNameOfBook.Text != "")
-            {
-                AddABook();
-                labelNameOfBook.ForeColor = Color.Black;
-                labelYear.ForeColor = Color.Black;
-                MessageBox.Show("The book has been added successfuly", "BigLibrary");
-            }
+            //    Regex checkOldYearsEnter = new Regex(@"^[1]{1}[0-9]{1}[0-9]{1}[0-9]{1}");
+            //    Regex checkNewYearEnter = new Regex(@"^[2]{1}[0]{1}[0]{1}[0-9]{1}");
+            //    Regex checkNewestYearEnter = new Regex(@"^[2]{1}[0]{1}[1]{1}[0-7]{1}");
+
+            //    if (textBoxNameOfBook.Text == "")
+            //    {
+            //        labelNameOfBook.ForeColor = Color.Red;
+            //    }
+            //    //{
+            //        if (!checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || !checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
+            //            !checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text))
+            //        {
+            //            labelYear.ForeColor = Color.Red;
+            //        }
+
+
+
+            //        if (checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
+            //                checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text) && textBoxNameOfBook.Text != "")
+            //        {
+            //            AddABook();
+            //            labelNameOfBook.ForeColor = Color.Black;
+            //            labelYear.ForeColor = Color.Black;
+            //            MessageBox.Show("The book has been added successfuly", "BigLibrary");
+
+            //        }
 
         }
+
+        
 
         private void buttonAddAuthor_Click(object sender, EventArgs e)
         {
@@ -75,6 +92,10 @@ namespace LibraryWindowsForms
             this.Show();
             LoadGenres();
         }
+
+
+
+
 
         private void LoadAuthors()
         {
@@ -120,10 +141,12 @@ namespace LibraryWindowsForms
 
             SqlCommand addABook = new SqlCommand(
                        @"insert into Books values (
-                       " + idAuthor + ","+idGenre+",'"+textBoxNameOfBook.Text+"',"+textBoxYearOfPublish.Text+")", connection);
+                       " + idAuthor + "," + idGenre + ",'" + textBoxNameOfBook.Text + "'," + textBoxYearOfPublish.Text + ")", connection);
             connection.Open();
             addABook.ExecuteNonQuery();
             connection.Close();
         }
+
+        
     }
 }

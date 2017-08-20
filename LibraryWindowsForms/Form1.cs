@@ -14,14 +14,23 @@ namespace LibraryWindowsForms
             @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\LibraryWindowsForms\LibraryDB.mdf;
              Integrated Security=True;Connect Timeout=30");
 
+       
+
         DeleteForm deleteForm;
         AddForm addForm;
         EditForm editForm;
-
+      
         public LibraryForm()
         {
             InitializeComponent();
             ShowTable();
+
+            addForm.Clicking += AddForm_Clicking;
+        }
+
+        private void AddForm_Clicking(object sender, ClickingEventArgs e)
+        {
+            bool isClicked = e.IsClicked;
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -49,12 +58,13 @@ namespace LibraryWindowsForms
             
         }
 
-        private void addABookToolStripMenuItem_Click(object sender, EventArgs e)
+        public void addABookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (addForm == null || addForm.IsDisposed)
             {
                 addForm = new AddForm();
-                addForm.Show();
+                addForm.ShowDialog();
+                addForm.Clicking += AddForm_Clicking;
 
             }
             else
