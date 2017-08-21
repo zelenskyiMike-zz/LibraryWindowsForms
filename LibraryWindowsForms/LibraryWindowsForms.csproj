@@ -114,7 +114,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ClickingEventArgs.cs" />
+    <Compile Include="SendingEventArgs.cs" />
     <EmbeddedResource Include="AddAuthorForm.resx">
       <DependentUpon>AddAuthorForm.cs</DependentUpon>
     </EmbeddedResource>

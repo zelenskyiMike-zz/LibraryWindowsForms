@@ -19,20 +19,24 @@ namespace LibraryWindowsForms
         DeleteForm deleteForm;
         AddForm addForm;
         EditForm editForm;
-      
+        bool isAdded = false;
         public LibraryForm()
         {
             InitializeComponent();
             ShowTable();
 
-            addForm.Clicking += AddForm_Clicking;
+            if (isAdded == true)
+            {
+                ShowTable();
+            }
+
+
         }
 
-        private void AddForm_Clicking(object sender, ClickingEventArgs e)
+        void IsAdded(object sender,SendingEventArgs e)
         {
-            bool isClicked = e.IsClicked;
+            isAdded = e.IsAdded;
         }
-
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             ShowTable();
@@ -64,7 +68,7 @@ namespace LibraryWindowsForms
             {
                 addForm = new AddForm();
                 addForm.ShowDialog();
-                addForm.Clicking += AddForm_Clicking;
+               // addForm.Clicking += AddForm_Clicking;
 
             }
             else

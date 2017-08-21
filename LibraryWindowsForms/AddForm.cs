@@ -14,66 +14,63 @@ namespace LibraryWindowsForms
 {
     public partial class AddForm : Form
     {
+
+        private event EventHandler<SendingEventArgs> sendDataFromFormEvent;
+
         SqlConnection connection = new SqlConnection(
            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\LibraryWindowsForms\LibraryDB.mdf;
              Integrated Security=True;Connect Timeout=30");
 
-        public event EventHandler<ClickingEventArgs> Clicking;
-
-        
         AddAuthorForm addAuthorForm;
         AddGenreForm addGenreForm;
-        
+
 
         public AddForm()
         {
             InitializeComponent();
             LoadAuthors();
             LoadGenres();
-            
-        }
+            buttonAddABook.Click +=new EventHandler( buttonAddABook_Click);
 
-       
+        }
 
         public void buttonAddABook_Click(object sender, EventArgs e)
         {
-
-            bool isClicked = false;
-
-            if (Clicking != null)
-                Clicking(this, new ClickingEventArgs(isClicked = true));
             //    string labelYearText = labelYear.Text;
 
-            //    Regex checkOldYearsEnter = new Regex(@"^[1]{1}[0-9]{1}[0-9]{1}[0-9]{1}");
-            //    Regex checkNewYearEnter = new Regex(@"^[2]{1}[0]{1}[0]{1}[0-9]{1}");
-            //    Regex checkNewestYearEnter = new Regex(@"^[2]{1}[0]{1}[1]{1}[0-7]{1}");
+           
 
-            //    if (textBoxNameOfBook.Text == "")
-            //    {
-            //        labelNameOfBook.ForeColor = Color.Red;
-            //    }
-            //    //{
-            //        if (!checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || !checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
-            //            !checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text))
-            //        {
-            //            labelYear.ForeColor = Color.Red;
-            //        }
+            Regex checkOldYearsEnter = new Regex(@"^[1]{1}[0-9]{1}[0-9]{1}[0-9]{1}");
+            Regex checkNewYearEnter = new Regex(@"^[2]{1}[0]{1}[0]{1}[0-9]{1}");
+            Regex checkNewestYearEnter = new Regex(@"^[2]{1}[0]{1}[1]{1}[0-7]{1}");
 
+            if (textBoxNameOfBook.Text == "")
+            {
+                labelNameOfBook.ForeColor = Color.Red;
+            }
+            //{
+            if (!checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || !checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
+                !checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text))
+            {
+                labelYear.ForeColor = Color.Red;
+            }
 
+            if (checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
+                    checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text) && textBoxNameOfBook.Text != "")
+            {
+                AddABook();
+                labelNameOfBook.ForeColor = Color.Black;
+                labelYear.ForeColor = Color.Black;
+                MessageBox.Show("The book has been added successfuly", "BigLibrary");
 
-            //        if (checkOldYearsEnter.IsMatch(textBoxYearOfPublish.Text) || checkNewYearEnter.IsMatch(textBoxYearOfPublish.Text) ||
-            //                checkNewestYearEnter.IsMatch(textBoxYearOfPublish.Text) && textBoxNameOfBook.Text != "")
-            //        {
-            //            AddABook();
-            //            labelNameOfBook.ForeColor = Color.Black;
-            //            labelYear.ForeColor = Color.Black;
-            //            MessageBox.Show("The book has been added successfuly", "BigLibrary");
+                //!!!!!!!!!!!!!!! need to ask!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            //        }
-
+                //if (sendDataFromFormEvent != null)
+                //    sendDataFromFormEvent(this,new SendingEventArgs(true));
+            }
         }
 
-        
+
 
         private void buttonAddAuthor_Click(object sender, EventArgs e)
         {
@@ -146,7 +143,5 @@ namespace LibraryWindowsForms
             addABook.ExecuteNonQuery();
             connection.Close();
         }
-
-        
     }
 }

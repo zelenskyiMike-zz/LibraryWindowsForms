@@ -20,12 +20,11 @@ namespace LibraryWindowsForms
         EditTitleForm editTitleForm;
 
 
+        
         public EditForm()
         {
             InitializeComponent();
             LoadBookList();
-
-            buttonEditTitle.Click += new EventHandler(buttonEditTitle_Click);
         }
 
         private void buttonChoose_Click(object sender, EventArgs e)
@@ -39,18 +38,32 @@ namespace LibraryWindowsForms
 
         private void buttonEditTitle_Click(object sender, EventArgs e)
         {
-            editTitleForm = new EditTitleForm();
+            if (editTitleForm == null || editTitleForm.IsDisposed)
+            {
+                editTitleForm = new EditTitleForm();
+                editTitleForm.Show();
 
-           
-            editTitleForm.ShowDialog();
-            
+            }
+            else
+            {
+                MessageBox.Show("This window has already been opened", "BigLibrary");
+            }
+
         }
 
 
-        void editTitleForm_sendDataFromFormEvent()
+        private void buttonEditGenre_Click(object sender, EventArgs e)
         {
 
         }
+
+        //public void TakeTitle()
+        //{
+        //    string title;
+
+        //    title = comboBoxChooseABook.Text;
+        //}
+        
         private void LoadBookList()
         {
             connection.Open();
@@ -66,9 +79,6 @@ namespace LibraryWindowsForms
         }
         private void ChooseBookInfo(out int idAuthor, out int idGenre, out int yearOfPublish)
         {
-            //int idAuthor;
-            //int idGenre;
-
             SqlCommand takeGenreID = new SqlCommand(
                        @"select idGenre from Books where nameOfBook like'" + comboBoxChooseABook.Text + "'", connection);
             SqlCommand takeAuthorID = new SqlCommand(
@@ -125,31 +135,41 @@ namespace LibraryWindowsForms
             //update Books
             //set idGenre = 1
             //where nameOfBook like 'Повесть новых лет'
+           
+            
+                SqlCommand UpdateGenre = new SqlCommand(
+                           @"update Books set Books.idGenre = " + comboBoxChooseAGenre.SelectedIndex + 1 + "" +
+                           " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
+                SqlCommand UpdateAuthor = new SqlCommand(
+                           @"update Books set idAuthor = " + comboBoxChooseAnAuthor.SelectedIndex + 1 + "" +
+                           " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
+                SqlCommand UpdateYearOfPublish = new SqlCommand(
+                           @"update Books set yearOfPublish = " + textBoxYearOfPublishDisplay.Text + "" +
+                           "  where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
 
+                
+            try
+            {
+                connection.Open();
+                //UpdateAuthor.ExecuteNonQuery();
+                //UpdateGenre.ExecuteNonQuery();
+                //UpdateYearOfPublish.ExecuteNonQuery();
 
-            SqlCommand UpdateTitle = new SqlCommand(
-                      @"update Books set nameOfBook = '" + comboBoxChooseABook.Text + "'" +
-                      " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
-            SqlCommand UpdateGenre = new SqlCommand(
-                       @"update Books set Books.idGenre = " + comboBoxChooseAGenre.SelectedIndex+1+ "" +
-                       " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
-            SqlCommand UpdateAuthor = new SqlCommand(
-                       @"update Books set idAuthor = " + comboBoxChooseAnAuthor.SelectedIndex+1 + "" +
-                       " where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
-            SqlCommand UpdateYearOfPublish = new SqlCommand(
-                       @"update Books set yearOfPublish = " + textBoxYearOfPublishDisplay.Text + "" +
-                       "  where nameOfBook like '" + comboBoxChooseABook.Text + "'", connection);
+                int t = comboBoxChooseAGenre.SelectedIndex + 1;
+                //MessageBox.Show("Success");
+                label1.Text = comboBoxChooseABook.Text;
+                label2.Text = t.ToString();
 
-            connection.Open();
-            UpdateTitle.ExecuteNonQuery();
-            UpdateAuthor.ExecuteNonQuery();
-            UpdateGenre.ExecuteNonQuery();
-            UpdateYearOfPublish.ExecuteNonQuery();
-            connection.Close();
-
-            MessageBox.Show("Success");
-            //label1.Text = comboBoxChooseAGenre.Text;
-            //label2.Text = comboBoxChooseAGenre.SelectedIndex.ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Please check all fields","BigLibrary");
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
+
     }
 }

@@ -106,6 +106,7 @@
             this.buttonEditGenre.TabIndex = 7;
             this.buttonEditGenre.Text = "Edit genre";
             this.buttonEditGenre.UseVisualStyleBackColor = true;
+            this.buttonEditGenre.Click += new System.EventHandler(this.buttonEditGenre_Click);
             // 
             // comboBoxChooseAnAuthor
             // 
