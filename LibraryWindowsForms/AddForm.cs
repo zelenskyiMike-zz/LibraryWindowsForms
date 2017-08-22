@@ -65,8 +65,8 @@ namespace LibraryWindowsForms
 
                 //!!!!!!!!!!!!!!! need to ask!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                //if (sendDataFromFormEvent != null)
-                //    sendDataFromFormEvent(this,new SendingEventArgs(true));
+                if (sendDataFromFormEvent != null)
+                    sendDataFromFormEvent(this,new SendingEventArgs(true));
             }
         }
 
